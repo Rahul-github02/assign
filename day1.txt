@@ -1,0 +1,24 @@
+1)a = 1
+  b = 1
+  while(b <= n)
+ {
+  a += 1
+  b += 1
+  cout<<"Hi";
+ }
+
+ans:Time Complexity:O(n)
+
+2)Write the output for the following recursive code snippet for n = 3:
+
+void fun(int n)
+{
+if(n > 0)
+{
+cout<<n:
+fun(n - 1);
+cout<<n;
+}
+}
+
+ans:321123
