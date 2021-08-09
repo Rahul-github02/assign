@@ -1,0 +1,123 @@
+Assignment:
+
+Implement the following functions for a single linked list:
+1. Insert at end
+2. Delete from beginning
+3. Delete from end
+
+ans:
+
+#include <iostream>
+#include <bits/stdc++.h>
+#define ll long long
+#define pb push_back
+#define mod1 1000000007
+#define mod2 998244353
+#define endl "\n"
+
+using namespace std;
+
+struct node
+{
+    int data;
+    struct node *next;
+}*head,*tail;
+node *createnode(int x)
+{
+    node* p=new node();
+    p->data=x;
+    p->next=NULL;
+    return p;
+}
+void insert(int x,node* r)
+{
+    node *p=createnode(x);
+    if(head==NULL)
+    {
+        head=p;
+        tail=p;
+    }
+    else
+    {
+        tail->next=p;
+        tail=p;
+    }
+}
+void display(node *head)
+{
+    node *temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+void insertion_at_end(int a)
+{
+    node *p=createnode(a);
+    if(tail==NULL)
+    {
+        tail=p;
+        head=p;
+    }
+    else
+    {
+        tail->next=p;
+        tail=tail->next;
+    }
+}
+void del_from_begin()
+{
+    if(head==NULL) cout<<"No element in the list to delete an elment from begining\n";
+    else
+    {
+        node *p=head;
+        free(p);
+        head=head->next;
+    }
+}
+void del_from_end()
+{
+    if(tail==NULL) cout<<"No element in the list to delete an element from end\n";
+    else
+    {
+        node *p=head;
+        while(p->next!=tail)
+        {
+            p=p->next;
+        }
+        //free(tail);
+        tail=p;
+        p->next=NULL;
+    }
+}
+int main()
+{
+    while(1)
+    {
+        cout<<"enter an element to insert else -1" <<endl;
+        int x;cin>>x;
+        if(x==-1) break;
+        insert(x,head);
+    }
+    cout<<"enter a choice"<<endl;
+    int choice;cin>>choice;
+    switch(choice)
+    {
+        case 1:
+        cout<<"Enter an element to be inserted at the end:\n";
+        int a;cin>>a;
+        insertion_at_end(a);
+        break;
+        
+        case 2:
+        del_from_begin();
+        break;
+        
+        case 3:
+        del_from_end();
+        break;
+    }
+    cout<<"Elements in the list are:\n";
+    display(head);
+}
